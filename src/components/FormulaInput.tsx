@@ -14,7 +14,6 @@ interface Suggestion {
 const FormulaInput: React.FC = () => {
   const { formula, addTag, removeTag, updateFormula, calculateResult } = useFormulaStore();
   const [inputValue, setInputValue] = useState('');
-  const [cursorPosition, setCursorPosition] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [result, setResult] = useState<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -28,7 +27,6 @@ const FormulaInput: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
-    setCursorPosition(e.target.selectionStart || 0);
     setShowSuggestions(value.trim().length > 0);
   };
 
